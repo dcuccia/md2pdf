@@ -34,7 +34,7 @@ Embed chart data directly in your Markdown as YAML. The `@chart` convention gene
 ### Bar Chart
 
 ```yaml
-# @chart → readme-languages.svg
+# @chart → docs/images/readme-languages.svg
 type: bar
 title: Language Distribution
 data:
@@ -45,12 +45,12 @@ data:
   Bash: 4
 ```
 
-![Language Distribution](readme-languages.svg)
+![Language Distribution](docs/images/readme-languages.svg)
 
 ### Pie Chart
 
 ```yaml
-# @chart → readme-license-compat.svg
+# @chart → docs/images/readme-license-compat.svg
 type: pie
 title: Dependency Licenses
 data:
@@ -60,12 +60,12 @@ data:
   ISC: 5
 ```
 
-![Dependency Licenses](readme-license-compat.svg)
+![Dependency Licenses](docs/images/readme-license-compat.svg)
 
 ### Sunburst Chart
 
 ```yaml
-# @chart → readme-architecture.svg
+# @chart → docs/images/readme-architecture.svg
 type: sunburst
 title: Pipeline Architecture
 data:
@@ -83,20 +83,20 @@ data:
     SVG Charts: 15
 ```
 
-![Pipeline Architecture](readme-architecture.svg)
+![Pipeline Architecture](docs/images/readme-architecture.svg)
 
 ### Pipe Table (Inline Data + Chart)
 
 Data visible as a table *and* rendered as a chart:
 
-<!-- @chart: hbar → readme-deps.svg -->
+<!-- @chart: hbar → docs/images/readme-deps.svg -->
 | Dependency | Size (KB) |
 |-----------|-----------|
 | markdown | 340 |
 | pyyaml | 280 |
 | playwright | 180 |
 
-![Dependencies](readme-deps.svg)
+![Dependencies](docs/images/readme-deps.svg)
 
 ## Themes
 
@@ -133,13 +133,19 @@ md2pdf/
 ├── md2pdf.sh         # Bash converter (Linux/macOS)
 ├── md2pdf.bat        # Batch wrapper
 ├── md2svg.py         # @chart SVG generator
-├── package.json      # Playwright dependency
+├── lib/
+│   ├── md2html.py    # MD → HTML conversion
+│   └── html2pdf.js   # HTML → PDF rendering
+├── package.json      # Node.js dependencies + scripts
+├── requirements.txt  # Python dependencies
 ├── themes/
 │   ├── default.css   # Professional blue theme
 │   ├── academic.css  # Serif journal theme
 │   └── minimal.css   # Clean neutral theme
+├── tests/            # pytest + Jest test suites
 └── docs/
-    └── guide.md      # Full user guide
+    ├── guide.md      # Full user guide
+    └── images/       # Generated chart SVGs
 ```
 
 ## Dependencies

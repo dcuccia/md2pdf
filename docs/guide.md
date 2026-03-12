@@ -268,13 +268,19 @@ md2pdf/
 ├── md2pdf.sh           # Bash converter (Linux/macOS)
 ├── md2pdf.bat          # Windows batch wrapper
 ├── md2svg.py           # @chart SVG generator
-├── package.json        # Playwright dependency
+├── lib/
+│   ├── md2html.py      # MD → HTML conversion
+│   └── html2pdf.js     # HTML → PDF rendering (Playwright)
+├── package.json        # Node.js dependencies + scripts
+├── requirements.txt    # Python dependencies
 ├── themes/
 │   ├── default.css     # Professional blue theme
 │   ├── academic.css    # Serif-based journal theme
 │   └── minimal.css     # Clean neutral theme
+├── tests/              # pytest + Jest test suites
 ├── docs/
-│   └── guide.md        # This user guide
+│   ├── guide.md        # This user guide
+│   └── images/         # Generated chart SVGs
 └── node_modules/       # Local Playwright install (auto-created)
 ```
 

@@ -167,90 +167,11 @@ for MD_FILE in "${MD_FILES[@]}"; do
     fi
 
     # Step 1: MD -> HTML via Python
-    python3 -c "
-import markdown, os, sys, re
+    python3 "$SCRIPT_DIR/lib/md2html.py" "$MD_FILE" "$HTML_FILE" "$CSS_PATH" --image-scale "$IMAGE_SCALE"
 
-md_path = sys.argv[1]
-html_path = sys.argv[2]
-css_path = sys.argv[3]
-img_height = sys.argv[4]
-
-with open(md_path, 'r', encoding='utf-8') as f:
-    md_text = f.read()
-
-# Scale images for PDF rendering
-md_text = md_text.replace('height=\"300\"', f'height=\"{img_height}\"')
-
-html_body = markdown.markdown(md_text, extensions=['tables', 'md_in_html', 'fenced_code'])
-
-# Convert fenced mermaid code blocks to Mermaid-compatible divs
-html_body = re.sub(
-    r'<pre><code class=\"language-mermaid\">(.*?)</code></pre>',
-    r'<pre class=\"mermaid\">\1</pre>',
-    html_body, flags=re.DOTALL
-)
-
-with open(css_path, 'r', encoding='utf-8') as f:
-    css = f.read()
-
-# Add Mermaid script if mermaid blocks are present
-mermaid_script = ''
-if '<pre class=\"mermaid\">' in html_body:
-    mermaid_script = '<script src=\"https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js\"></script><script>mermaid.initialize({startOnLoad:true});</script>'
-
-html = '<!DOCTYPE html><html><head><meta charset=\"utf-8\"><style>' + css + '</style>' + mermaid_script + '</head><body>' + html_body + '</body></html>'
-
-with open(html_path, 'w', encoding='utf-8') as f:
-    f.write(html)
-
-print(f'HTML: {os.path.getsize(html_path)} bytes')
-" "$MD_FILE" "$HTML_FILE" "$CSS_PATH" "$IMAGE_SCALE"
-
-    # Step 2: HTML -> PDF via Playwright (local HTTP server + headless Chromium)
+    # Step 2: HTML -> PDF via Playwright (headless Chromium)
     HTML_NAME="$(basename "$HTML_FILE")"
-    node -e "
-const { chromium } = require('playwright');
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-
-const dir = process.argv[1];
-const htmlName = process.argv[2];
-const pdfPath = process.argv[3];
-
-const mimeTypes = {
-    '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript',
-    '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
-    '.gif': 'image/gif', '.svg': 'image/svg+xml'
-};
-
-const server = http.createServer((req, res) => {
-    const filePath = path.join(dir, decodeURIComponent(req.url.replace(/^\//, '')));
-    if (!fs.existsSync(filePath)) { res.writeHead(404); res.end(); return; }
-    const ext = path.extname(filePath).toLowerCase();
-    res.writeHead(200, { 'Content-Type': mimeTypes[ext] || 'application/octet-stream' });
-    fs.createReadStream(filePath).pipe(res);
-});
-
-(async () => {
-    await new Promise(r => server.listen(0, '127.0.0.1', r));
-    const port = server.address().port;
-    const browser = await chromium.launch();
-    const page = await browser.newPage();
-    await page.goto('http://127.0.0.1:' + port + '/' + encodeURIComponent(htmlName), { waitUntil: 'networkidle' });
-    await page.waitForFunction(() => {
-        const els = document.querySelectorAll('.mermaid');
-        return els.length === 0 || [...els].every(el => el.querySelector('svg'));
-    }, { timeout: 15000 }).catch(() => {});
-    await page.pdf({
-        path: pdfPath, format: 'Letter', printBackground: true,
-        margin: { top: '0.6in', bottom: '0.6in', left: '0.75in', right: '0.75in' }
-    });
-    await browser.close();
-    server.close();
-    console.log('PDF: ' + fs.statSync(pdfPath).size + ' bytes');
-})();
-" "$DIR" "$HTML_NAME" "$PDF_FILE"
+    node "$SCRIPT_DIR/lib/html2pdf.js" "$DIR" "$HTML_NAME" "$PDF_FILE"
 
     green "[md2pdf] Done: $PDF_FILE"
 done
