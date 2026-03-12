@@ -117,6 +117,47 @@ def hello():
 
 > This is a blockquote used to test theme styling.
 
+## Alerts
+
+> [!NOTE]
+> This is a note alert.
+
+> [!WARNING]
+> This is a warning alert.
+
+> [!TIP]
+> This is a tip alert.
+
+> [!IMPORTANT]
+> This is an important alert.
+
+> [!CAUTION]
+> This is a caution alert.
+
+## Task Lists
+
+- [ ] Incomplete task
+- [x] Completed task
+- [ ] Another incomplete task
+
+## Math
+
+Inline math: $E = mc^2$
+
+Block math:
+
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
+
+## Page Break
+
+<!-- pagebreak -->
+
+## After Page Break
+
+This content appears on a new page.
+
 ## Nested List
 
 - Item 1

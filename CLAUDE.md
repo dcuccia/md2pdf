@@ -41,10 +41,12 @@ document.md → md2svg.py → *.svg charts
 
 - `lib/md2svg.py` — Python. Scans markdown for `@chart` YAML blocks, generates SVG files.
   Uses a dispatch table pattern (`CHART_GENERATORS` dict) for chart types.
-- `lib/md2html.py` — Python. MD → HTML conversion with CSS theme injection and Mermaid support.
+- `lib/md2html.py` — Python. MD → HTML conversion with transform pipeline.
+  Supports: Mermaid, GitHub alerts, task lists, syntax highlighting, math (KaTeX),
+  page breaks, and YAML frontmatter. Uses `TRANSFORMS` list (dispatch pattern).
 - `lib/html2pdf.js` — Node.js. HTML → PDF via Playwright. Starts a local HTTP server for assets.
 - `md2pdf.ps1` / `md2pdf.sh` — Shell orchestrators. Must maintain feature parity.
-- `themes/*.css` — PDF styling themes.
+- `themes/*.css` — PDF styling themes. Must include styles for alerts, task lists, page breaks.
 - `tests/` — pytest (Python) and Jest (JS) tests.
 
 ## Conventions to Follow
@@ -54,6 +56,13 @@ document.md → md2svg.py → *.svg charts
 2. Register in `CHART_GENERATORS` dict
 3. Add test in `tests/test_md2svg.py`
 4. Add example in `docs/guide.md`
+
+### Adding an HTML transform
+1. Add `transform_<feature>(html) -> (html, scripts, styles)` in `lib/md2html.py`
+2. Register in `TRANSFORMS` list
+3. Add CSS support in all `themes/*.css` files (use `md2pdf-` prefix for class names)
+4. Add test in `tests/test_md2html.py`
+5. Add example in `docs/guide.md`
 
 ### Adding a theme
 1. Create `themes/<name>.css` (copy structure from `themes/default.css`)

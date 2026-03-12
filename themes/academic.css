@@ -88,3 +88,68 @@ li {
 p {
     margin: 6pt 0;
 }
+
+/* ── Alerts (GitHub-style callout boxes) ── */
+
+.md2pdf-alert {
+    border-left: 3px solid #888;
+    background: #f9f9f9;
+    padding: 10pt 14pt;
+    margin: 14pt 0;
+    font-size: 10pt;
+}
+
+.md2pdf-alert-title {
+    font-weight: 700;
+    font-size: 10pt;
+    margin: 0 0 4pt 0;
+}
+
+.md2pdf-alert-note { border-left-color: #4a6fa5; background: #f0f4f8; }
+.md2pdf-alert-tip { border-left-color: #4a8c5c; background: #f0f7f2; }
+.md2pdf-alert-important { border-left-color: #6a4fa5; background: #f5f0fa; }
+.md2pdf-alert-warning { border-left-color: #8c7a3e; background: #faf5e8; }
+.md2pdf-alert-caution { border-left-color: #a54a4a; background: #faf0f0; }
+
+/* ── Task lists ── */
+
+.md2pdf-task {
+    list-style: none;
+    margin-left: -20pt;
+}
+
+.md2pdf-task input[type="checkbox"] {
+    margin-right: 4pt;
+}
+
+/* ── Code blocks ── */
+
+pre {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10pt 12pt;
+    font-size: 9pt;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9pt;
+}
+
+p > code, li > code, td > code {
+    background: #f0f0f0;
+    padding: 1pt 4pt;
+    border-radius: 2px;
+}
+
+/* ── Page breaks ── */
+
+.md2pdf-pagebreak {
+    page-break-before: always;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}

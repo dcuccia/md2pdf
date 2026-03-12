@@ -21,7 +21,7 @@ document.md → md2svg.py → *.svg charts
 | File | Language | Purpose |
 |------|----------|---------|
 | `lib/md2svg.py` | Python | Scans markdown for `@chart` blocks, generates SVG files |
-| `lib/md2html.py` | Python | Converts Markdown → styled HTML with Mermaid support |
+| `lib/md2html.py` | Python | Converts Markdown → styled HTML with transform pipeline |
 | `lib/html2pdf.js` | Node.js | Renders HTML → PDF via Playwright headless Chromium |
 | `md2pdf.ps1` | PowerShell | Windows orchestrator — calls all three stages |
 | `md2pdf.sh` | Bash | Linux/macOS orchestrator — calls all three stages |
@@ -36,6 +36,14 @@ document.md → md2svg.py → *.svg charts
 2. Register it in the `CHART_GENERATORS` dispatch table
 3. Add a test in `tests/test_md2svg.py`
 4. Add an example in `docs/guide.md`
+
+### Adding an HTML Transform
+
+1. Add `transform_<feature>(html: str) -> tuple[str, list[str], list[str]]` in `lib/md2html.py`
+2. Register in the `TRANSFORMS` list (order matters — Mermaid runs first)
+3. Add CSS support in all `themes/*.css` files (use `md2pdf-` class prefix)
+4. Add a test class in `tests/test_md2html.py`
+5. Add an example in `docs/guide.md`
 
 ### Adding a New Theme
 
@@ -52,7 +60,9 @@ document.md → md2svg.py → *.svg charts
 - **Shell scripts (ps1/sh):** Must maintain feature parity — any change to
   the pipeline in one script must be reflected in the other.
 - **CSS themes:** Comment header with theme name and description. Must define
-  all elements: `@page`, body, h1-h2, tables, blockquotes, lists, images, hr.
+  all elements: `@page`, body, h1-h2, tables, blockquotes, lists, images, hr,
+  alerts (`.md2pdf-alert-*`), task lists (`.md2pdf-task`), page breaks (`.md2pdf-pagebreak`),
+  and code blocks (`pre`, `code`).
 
 ### Dependencies
 

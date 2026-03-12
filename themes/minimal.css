@@ -91,3 +91,69 @@ li {
 p {
     margin: 6pt 0;
 }
+
+/* ── Alerts (GitHub-style callout boxes) ── */
+
+.md2pdf-alert {
+    border-left: 3px solid #d0d7de;
+    background: #f6f8fa;
+    padding: 10pt 14pt;
+    margin: 12pt 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.md2pdf-alert-title {
+    font-weight: 600;
+    font-size: 10pt;
+    margin: 0 0 4pt 0;
+}
+
+.md2pdf-alert-note { border-left-color: #0969da; background: #ddf4ff; }
+.md2pdf-alert-tip { border-left-color: #1a7f37; background: #dafbe1; }
+.md2pdf-alert-important { border-left-color: #8250df; background: #fbefff; }
+.md2pdf-alert-warning { border-left-color: #9a6700; background: #fff8c5; }
+.md2pdf-alert-caution { border-left-color: #cf222e; background: #ffebe9; }
+
+/* ── Task lists ── */
+
+.md2pdf-task {
+    list-style: none;
+    margin-left: -20pt;
+}
+
+.md2pdf-task input[type="checkbox"] {
+    margin-right: 4pt;
+}
+
+/* ── Code blocks ── */
+
+pre {
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 12pt 14pt;
+    font-size: 9pt;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    overflow-x: auto;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 9pt;
+}
+
+p > code, li > code, td > code {
+    background: #eff1f3;
+    padding: 1pt 5pt;
+    border-radius: 4px;
+    font-size: 8.5pt;
+}
+
+/* ── Page breaks ── */
+
+.md2pdf-pagebreak {
+    page-break-before: always;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}

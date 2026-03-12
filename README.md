@@ -9,6 +9,12 @@ Convert Markdown documents to professionally styled PDFs with support for tables
 - **One command** — `./md2pdf.sh doc.md` handles everything
 - **@chart blocks** — embed YAML data in Markdown, get SVG charts automatically
 - **Mermaid diagrams** — fenced `mermaid` blocks rendered via CDN
+- **GitHub alerts** — `> [!NOTE]`, `> [!WARNING]`, etc. render as styled callout boxes
+- **Math/LaTeX** — `$inline$` and `$$block$$` math via KaTeX
+- **Syntax highlighting** — fenced code blocks with language tags via Highlight.js
+- **Task lists** — `- [ ]` / `- [x]` render as styled checkboxes
+- **Page breaks** — `<!-- pagebreak -->` for multi-page document control
+- **YAML frontmatter** — per-document title, author, theme, image scale
 - **Themes** — three bundled CSS themes (default, academic, minimal) or bring your own
 - **Idempotent** — auto-installs dependencies on first run
 - **Non-destructive** — never overwrites existing PDFs (auto-increments `_1`, `_2`, ...)
@@ -123,7 +129,22 @@ document.md ──→ lib/md2svg.py ──→ *.svg charts
 
 1. **Step 0** — `lib/md2svg.py` scans for `@chart` blocks and generates SVG files
 2. **Step 1** — Python `markdown` converts MD → HTML with the selected CSS theme
-3. **Step 2** — Playwright renders HTML → PDF via headless Chromium (with Mermaid support)
+3. **Step 2** — Transform pipeline processes alerts, math, syntax highlighting, task lists, page breaks
+4. **Step 3** — Playwright renders HTML → PDF via headless Chromium (with Mermaid support)
+
+## GitHub-Native Features
+
+md2pdf's transform pipeline ensures that Markdown features that render natively on GitHub also render correctly in PDF output:
+
+| Feature | Markdown syntax | PDF rendering |
+|---------|----------------|---------------|
+| Alerts | `> [!NOTE]` / `> [!WARNING]` / etc. | Styled callout boxes with icons |
+| Math | `$E=mc^2$` / `$$\int f(x)dx$$` | KaTeX-rendered equations |
+| Syntax highlight | `` ```python `` | Highlight.js colored code |
+| Task lists | `- [ ]` / `- [x]` | Styled checkboxes |
+| Page breaks | `<!-- pagebreak -->` | CSS page breaks |
+| Frontmatter | `---\ntitle: ...\n---` | Title in HTML `<head>`, image scale overrides |
+| Mermaid | `` ```mermaid `` | CDN-rendered diagrams |
 
 ## File Structure
 

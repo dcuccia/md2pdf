@@ -86,3 +86,68 @@ li {
 p {
     margin: 4pt 0;
 }
+
+/* ── Alerts (GitHub-style callout boxes) ── */
+
+.md2pdf-alert {
+    border-left: 4px solid #0f3460;
+    background: #f0f4f8;
+    padding: 10pt 14pt;
+    margin: 12pt 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.md2pdf-alert-title {
+    font-weight: 700;
+    font-size: 10pt;
+    margin: 0 0 4pt 0;
+}
+
+.md2pdf-alert-note { border-left-color: #0969da; background: #ddf4ff; }
+.md2pdf-alert-tip { border-left-color: #1a7f37; background: #dafbe1; }
+.md2pdf-alert-important { border-left-color: #8250df; background: #fbefff; }
+.md2pdf-alert-warning { border-left-color: #9a6700; background: #fff8c5; }
+.md2pdf-alert-caution { border-left-color: #cf222e; background: #ffebe9; }
+
+/* ── Task lists ── */
+
+.md2pdf-task {
+    list-style: none;
+    margin-left: -18pt;
+}
+
+.md2pdf-task input[type="checkbox"] {
+    margin-right: 4pt;
+}
+
+/* ── Code blocks ── */
+
+pre {
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    padding: 10pt 12pt;
+    font-size: 9pt;
+    font-family: Consolas, 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+code {
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 9pt;
+}
+
+p > code, li > code, td > code {
+    background: #f0f2f5;
+    padding: 1pt 4pt;
+    border-radius: 3px;
+}
+
+/* ── Page breaks ── */
+
+.md2pdf-pagebreak {
+    page-break-before: always;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
