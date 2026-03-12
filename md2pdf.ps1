@@ -136,7 +136,7 @@ foreach ($MdFile in $MdFiles) {
     Write-Host "[md2pdf] Converting: $BaseName.md -> $PdfName" -ForegroundColor Cyan
 
     # Step 0: Generate SVGs from @chart YAML blocks
-    $md2svgPath = Join-Path $ScriptDir "md2svg.py"
+    $md2svgPath = Join-Path $ScriptDir "lib\md2svg.py"
     if (Test-Path $md2svgPath) {
         Write-Host "[md2pdf] Scanning for @chart blocks..." -ForegroundColor DarkCyan
         python $md2svgPath $MdFile

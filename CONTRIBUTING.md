@@ -44,7 +44,7 @@ Three pipeline stages, each in its own file:
 
 | Stage | File | Language | Tests |
 |-------|------|----------|-------|
-| Chart generation | `md2svg.py` | Python | `tests/test_md2svg.py` |
+| Chart generation | `lib/md2svg.py` | Python | `tests/test_md2svg.py` |
 | MD → HTML | `lib/md2html.py` | Python | `tests/test_md2html.py` |
 | HTML → PDF | `lib/html2pdf.js` | Node.js | `tests/html2pdf.test.js` |
 
@@ -55,7 +55,7 @@ these stages in sequence. They must stay in sync with each other.
 
 ### Adding a New Chart Type
 
-1. Add a `generate_<type>(spec: dict) -> str` function in `md2svg.py`
+1. Add a `generate_<type>(spec: dict) -> str` function in `lib/md2svg.py`
 2. Register it in the `CHART_GENERATORS` dispatch table
 3. Add tests in `tests/test_md2svg.py` (at minimum: valid SVG output,
    labels present, empty data returns empty string)

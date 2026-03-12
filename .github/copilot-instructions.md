@@ -3,7 +3,7 @@
 ## Project Overview
 
 md2pdf is a Markdown → styled HTML + PDF converter with inline chart generation.
-It uses a three-stage pipeline: `md2svg.py` generates charts, `lib/md2html.py`
+It uses a three-stage pipeline: `lib/md2svg.py` generates charts, `lib/md2html.py`
 converts MD → HTML with CSS themes, and `lib/html2pdf.js` renders HTML → PDF via
 Playwright headless Chromium.
 
@@ -20,7 +20,7 @@ document.md → md2svg.py → *.svg charts
 
 | File | Language | Purpose |
 |------|----------|---------|
-| `md2svg.py` | Python | Scans markdown for `@chart` blocks, generates SVG files |
+| `lib/md2svg.py` | Python | Scans markdown for `@chart` blocks, generates SVG files |
 | `lib/md2html.py` | Python | Converts Markdown → styled HTML with Mermaid support |
 | `lib/html2pdf.js` | Node.js | Renders HTML → PDF via Playwright headless Chromium |
 | `md2pdf.ps1` | PowerShell | Windows orchestrator — calls all three stages |
@@ -32,7 +32,7 @@ document.md → md2svg.py → *.svg charts
 
 ### Adding a New Chart Type
 
-1. Add a `generate_<type>(spec: dict) -> str` function in `md2svg.py`
+1. Add a `generate_<type>(spec: dict) -> str` function in `lib/md2svg.py`
 2. Register it in the `CHART_GENERATORS` dispatch table
 3. Add a test in `tests/test_md2svg.py`
 4. Add an example in `docs/guide.md`
@@ -46,7 +46,7 @@ document.md → md2svg.py → *.svg charts
 ### Code Style
 
 - **Python:** 4-space indent, type hints on public functions, docstrings on
-  modules and public functions. Follow the patterns in `md2svg.py`.
+  modules and public functions. Follow the patterns in `lib/md2svg.py`.
 - **JavaScript:** 2-space indent, JSDoc on exported functions, `const`/`let`
   only (no `var`). CommonJS modules (`require`/`module.exports`).
 - **Shell scripts (ps1/sh):** Must maintain feature parity — any change to

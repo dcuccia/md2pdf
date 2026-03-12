@@ -246,7 +246,7 @@ md2pdf.bat [OPTIONS] [path\to\file.md]
 - **No file specified:** converts all `.md` files in the parent directory
 - **Never overwrites:** existing PDFs get `_1`, `_2`, etc. suffixes
 - **Relative paths:** resolved against the `md2pdf/` script directory's parent
-- **SVG generation:** runs automatically before HTML conversion if `md2svg.py` is present
+- **SVG generation:** runs automatically before HTML conversion if `lib/md2svg.py` is present
 
 ### Standalone SVG Generation
 
@@ -254,10 +254,10 @@ You can generate charts without producing a PDF:
 
 ```bash
 # Generate all @chart SVGs from a document
-python md2svg.py "../My Document.md"
+python lib/md2svg.py "../My Document.md"
 
 # List @chart blocks without generating
-python md2svg.py "../My Document.md" --list
+python lib/md2svg.py "../My Document.md" --list
 ```
 
 ## File Structure
@@ -267,8 +267,8 @@ md2pdf/
 ├── md2pdf.ps1          # PowerShell converter (Windows primary)
 ├── md2pdf.sh           # Bash converter (Linux/macOS)
 ├── md2pdf.bat          # Windows batch wrapper
-├── md2svg.py           # @chart SVG generator
 ├── lib/
+│   ├── md2svg.py       # @chart SVG generator
 │   ├── md2html.py      # MD → HTML conversion
 │   └── html2pdf.js     # HTML → PDF rendering (Playwright)
 ├── package.json        # Node.js dependencies + scripts
@@ -295,7 +295,7 @@ The `@chart` convention is designed for agent-assisted document authoring:
 To regenerate charts after data changes, ask the agent to *"update charts in this document"* or run:
 
 ```bash
-python md2svg.py "path/to/document.md"
+python lib/md2svg.py "path/to/document.md"
 ```
 
 ### Convention Reference

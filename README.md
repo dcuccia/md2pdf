@@ -115,13 +115,13 @@ Data visible as a table *and* rendered as a chart:
 ## How It Works
 
 ```
-document.md ──→ md2svg.py ──→ *.svg charts
+document.md ──→ lib/md2svg.py ──→ *.svg charts
      │                            │
      └──→ Python markdown ──→ styled HTML ──→ Playwright ──→ PDF
               (+ CSS theme)       (+ Mermaid CDN)    (headless Chromium)
 ```
 
-1. **Step 0** — `md2svg.py` scans for `@chart` blocks and generates SVG files
+1. **Step 0** — `lib/md2svg.py` scans for `@chart` blocks and generates SVG files
 2. **Step 1** — Python `markdown` converts MD → HTML with the selected CSS theme
 3. **Step 2** — Playwright renders HTML → PDF via headless Chromium (with Mermaid support)
 
@@ -132,8 +132,8 @@ md2pdf/
 ├── md2pdf.ps1        # PowerShell converter (Windows)
 ├── md2pdf.sh         # Bash converter (Linux/macOS)
 ├── md2pdf.bat        # Batch wrapper
-├── md2svg.py         # @chart SVG generator
 ├── lib/
+│   ├── md2svg.py     # @chart SVG generator
 │   ├── md2html.py    # MD → HTML conversion
 │   └── html2pdf.js   # HTML → PDF rendering
 ├── package.json      # Node.js dependencies + scripts

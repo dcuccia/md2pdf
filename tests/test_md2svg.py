@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pytest
 
-# Add project root to path so we can import md2svg
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Add lib/ to path so we can import md2svg
+sys.path.insert(0, str(Path(__file__).parent.parent / "lib"))
 import md2svg
 
 

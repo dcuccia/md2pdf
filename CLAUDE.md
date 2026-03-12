@@ -39,7 +39,7 @@ document.md → md2svg.py → *.svg charts
 
 ## Key Files
 
-- `md2svg.py` — Python. Scans markdown for `@chart` YAML blocks, generates SVG files.
+- `lib/md2svg.py` — Python. Scans markdown for `@chart` YAML blocks, generates SVG files.
   Uses a dispatch table pattern (`CHART_GENERATORS` dict) for chart types.
 - `lib/md2html.py` — Python. MD → HTML conversion with CSS theme injection and Mermaid support.
 - `lib/html2pdf.js` — Node.js. HTML → PDF via Playwright. Starts a local HTTP server for assets.
@@ -50,7 +50,7 @@ document.md → md2svg.py → *.svg charts
 ## Conventions to Follow
 
 ### Adding a chart type
-1. Add `generate_<type>(spec)` function in `md2svg.py`
+1. Add `generate_<type>(spec)` function in `lib/md2svg.py`
 2. Register in `CHART_GENERATORS` dict
 3. Add test in `tests/test_md2svg.py`
 4. Add example in `docs/guide.md`
@@ -60,7 +60,7 @@ document.md → md2svg.py → *.svg charts
 2. Update theme tables in `README.md` and `docs/guide.md`
 
 ### Code patterns
-- Python: 4-space indent, type hints, docstrings. Follow `md2svg.py` style.
+- Python: 4-space indent, type hints, docstrings. Follow `lib/md2svg.py` style.
 - JS: 2-space indent, JSDoc, CommonJS modules. Follow `lib/html2pdf.js` style.
 - Shell scripts: thin orchestrators only — no business logic inline.
 - CSS: comment header, must define all element types.

@@ -160,7 +160,7 @@ for MD_FILE in "${MD_FILES[@]}"; do
     cyan "[md2pdf] Converting: $BASENAME.md -> $PDF_NAME"
 
     # Step 0: Generate SVGs from @chart YAML blocks
-    MD2SVG="$SCRIPT_DIR/md2svg.py"
+    MD2SVG="$SCRIPT_DIR/lib/md2svg.py"
     if [[ -f "$MD2SVG" ]]; then
         cyan "[md2pdf] Scanning for @chart blocks..."
         python3 "$MD2SVG" "$MD_FILE"
