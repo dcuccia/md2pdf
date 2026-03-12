@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+<rect width="600" height="400" fill="white"/>
+<text x="300.0" y="35" text-anchor="middle" font-size="16" font-weight="700" fill="#333" font-family="Segoe UI, Helvetica, Arial, sans-serif">Language Distribution</text>
+<line x1="70" y1="340" x2="570" y2="340" stroke="#E0E0E0" stroke-width="0.5"/>
+<text x="62" y="344" text-anchor="end" font-size="10" fill="#666" font-family="Segoe UI, Helvetica, Arial, sans-serif">0</text>
+<line x1="70" y1="270" x2="570" y2="270" stroke="#E0E0E0" stroke-width="0.5"/>
+<text x="62" y="274" text-anchor="end" font-size="10" fill="#666" font-family="Segoe UI, Helvetica, Arial, sans-serif">10.5</text>
+<line x1="70" y1="200" x2="570" y2="200" stroke="#E0E0E0" stroke-width="0.5"/>
+<text x="62" y="204" text-anchor="end" font-size="10" fill="#666" font-family="Segoe UI, Helvetica, Arial, sans-serif">21</text>
+<line x1="70" y1="130" x2="570" y2="130" stroke="#E0E0E0" stroke-width="0.5"/>
+<text x="62" y="134" text-anchor="end" font-size="10" fill="#666" font-family="Segoe UI, Helvetica, Arial, sans-serif">31.5</text>
+<line x1="70" y1="60" x2="570" y2="60" stroke="#E0E0E0" stroke-width="0.5"/>
+<text x="62" y="64" text-anchor="end" font-size="10" fill="#666" font-family="Segoe UI, Helvetica, Arial, sans-serif">42</text>
+<rect x="87.5" y="60.0" width="65.0" height="280.0" rx="3" fill="#4E79A7" opacity="0.85"/>
+<text x="120.0" y="54.0" text-anchor="middle" font-size="10" font-weight="600" fill="#333" font-family="Segoe UI, Helvetica, Arial, sans-serif">42</text>
+<text x="120.0" y="358" text-anchor="middle" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">Python</text>
+<rect x="187.5" y="153.3" width="65.0" height="186.7" rx="3" fill="#F28E2B" opacity="0.85"/>
+<text x="220.0" y="147.3" text-anchor="middle" font-size="10" font-weight="600" fill="#333" font-family="Segoe UI, Helvetica, Arial, sans-serif">28</text>
+<text x="220.0" y="358" text-anchor="middle" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">JavaScript</text>
+<rect x="287.5" y="220.0" width="65.0" height="120.0" rx="3" fill="#E15759" opacity="0.85"/>
+<text x="320.0" y="214.0" text-anchor="middle" font-size="10" font-weight="600" fill="#333" font-family="Segoe UI, Helvetica, Arial, sans-serif">18</text>
+<text x="320.0" y="358" text-anchor="middle" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">CSS</text>
+<rect x="387.5" y="286.7" width="65.0" height="53.3" rx="3" fill="#76B7B2" opacity="0.85"/>
+<text x="420.0" y="280.7" text-anchor="middle" font-size="10" font-weight="600" fill="#333" font-family="Segoe UI, Helvetica, Arial, sans-serif">8</text>
+<text x="420.0" y="358" text-anchor="middle" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">PowerShell</text>
+<rect x="487.5" y="313.3" width="65.0" height="26.7" rx="3" fill="#59A14F" opacity="0.85"/>
+<text x="520.0" y="307.3" text-anchor="middle" font-size="10" font-weight="600" fill="#333" font-family="Segoe UI, Helvetica, Arial, sans-serif">4</text>
+<text x="520.0" y="358" text-anchor="middle" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">Bash</text>
+</svg>

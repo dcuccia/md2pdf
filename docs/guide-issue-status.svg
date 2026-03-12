@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="500" height="400">
+<rect width="500" height="400" fill="white"/>
+<text x="250.0" y="35" text-anchor="middle" font-size="16" font-weight="700" fill="#333" font-family="Segoe UI, Helvetica, Arial, sans-serif">Issue Tracker Status</text>
+<path d="M 201.0,80.0 A 140.0,140.0 0 1,1 60.0,223.3 L 130.0,221.6 A 70.0,70.0 0 1,0 200.5,150.0 Z" fill="#4E79A7" stroke="white" stroke-width="1.5" opacity="0.9"/>
+<text x="275" y="294" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="600" fill="white" font-family="Segoe UI, Helvetica, Arial, sans-serif">75%</text>
+<rect x="380" y="80" width="14" height="14" rx="2" fill="#4E79A7"/>
+<text x="400" y="91" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">Closed (75%)</text>
+<path d="M 60.0,221.3 A 140.0,140.0 0 0,1 96.3,125.9 L 148.2,173.0 A 70.0,70.0 0 0,0 130.0,220.7 Z" fill="#F28E2B" stroke="white" stroke-width="1.5" opacity="0.9"/>
+<text x="102" y="183" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="600" fill="white" font-family="Segoe UI, Helvetica, Arial, sans-serif">12%</text>
+<rect x="380" y="102" width="14" height="14" rx="2" fill="#F28E2B"/>
+<text x="400" y="113" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">In Progress (12%)</text>
+<path d="M 97.7,124.5 A 140.0,140.0 0 0,1 166.9,84.0 L 183.5,152.0 A 70.0,70.0 0 0,0 148.8,172.2 Z" fill="#E15759" stroke="white" stroke-width="1.5" opacity="0.9"/>
+<text x="147" y="129" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="600" fill="white" font-family="Segoe UI, Helvetica, Arial, sans-serif">9%</text>
+<rect x="380" y="124" width="14" height="14" rx="2" fill="#E15759"/>
+<text x="400" y="135" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">Open (9%)</text>
+<path d="M 168.8,83.5 A 140.0,140.0 0 0,1 199.0,80.0 L 199.5,150.0 A 70.0,70.0 0 0,0 184.4,151.8 Z" fill="#76B7B2" stroke="white" stroke-width="1.5" opacity="0.9"/>
+<rect x="380" y="146" width="14" height="14" rx="2" fill="#76B7B2"/>
+<text x="400" y="157" font-size="10" fill="#444" font-family="Segoe UI, Helvetica, Arial, sans-serif">Blocked (4%)</text>
+</svg>

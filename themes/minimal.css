@@ -1,0 +1,93 @@
+/*
+ * md2pdf theme: minimal
+ * A clean, neutral theme with minimal visual decoration.
+ * Sans-serif with gray accents and borderless tables.
+ */
+
+@page { size: Letter; margin: 0.75in; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    color: #24292e;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 20pt;
+    color: #24292e;
+    margin-bottom: 4pt;
+    font-weight: 600;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: 6pt;
+}
+
+h2 {
+    font-size: 14pt;
+    color: #24292e;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: 4pt;
+    margin-top: 18pt;
+    font-weight: 600;
+}
+
+h1 + p > em {
+    color: #6a737d;
+    font-size: 10pt;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 8pt 0;
+    font-size: 9pt;
+}
+
+th, td {
+    border: 1px solid #dfe2e5;
+    padding: 5pt 10pt;
+    text-align: left;
+}
+
+th {
+    background: #f6f8fa;
+    color: #24292e;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background: #f6f8fa;
+}
+
+img {
+    max-height: 340px;
+    vertical-align: middle;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e1e4e8;
+    margin: 14pt 0;
+}
+
+blockquote {
+    background: transparent;
+    border-left: 3px solid #dfe2e5;
+    padding: 8pt 12pt;
+    margin: 12pt 0;
+    font-size: 9.5pt;
+    color: #6a737d;
+}
+
+ul, ol {
+    padding-left: 20pt;
+    margin: 4pt 0;
+}
+
+li {
+    margin-bottom: 2pt;
+}
+
+p {
+    margin: 6pt 0;
+}
