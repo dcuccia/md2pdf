@@ -378,7 +378,7 @@ def scan_charts(md_text: str) -> list[dict]:
         try:
             parsed = yaml.safe_load(yaml_body)
         except yaml.YAMLError as e:
-            print(f"  ⚠ YAML parse error for {filename}: {e}", file=sys.stderr)
+            print(f"  [!] YAML parse error for {filename}: {e}", file=sys.stderr)
             continue
         if not isinstance(parsed, dict):
             continue
@@ -416,25 +416,25 @@ def generate_charts(md_path: str | Path, *, list_only: bool = False) -> list[str
         chart_type = spec.get("type", "bar")
 
         if list_only:
-            print(f"  📊 {filename} (type: {chart_type})")
+            print(f"  [chart] {filename} (type: {chart_type})")
             generated.append(filename)
             continue
 
         gen_fn = CHART_GENERATORS.get(chart_type)
         if not gen_fn:
-            print(f"  ⚠ Unknown chart type '{chart_type}' for {filename} "
+            print(f"  [!] Unknown chart type '{chart_type}' for {filename} "
                   f"(available: {', '.join(CHART_GENERATORS)})", file=sys.stderr)
             continue
 
         svg = gen_fn(spec)
         if not svg:
-            print(f"  ⚠ No data for {filename}", file=sys.stderr)
+            print(f"  [!] No data for {filename}", file=sys.stderr)
             continue
 
         out_path = output_dir / filename
         out_path.write_text(svg, encoding="utf-8")
         size_kb = out_path.stat().st_size / 1024
-        print(f"  ✓ {filename} ({size_kb:.1f} KB)")
+        print(f"  [ok] {filename} ({size_kb:.1f} KB)")
         generated.append(filename)
 
     return generated
