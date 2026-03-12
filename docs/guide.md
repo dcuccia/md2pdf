@@ -47,10 +47,15 @@ Tables, blockquotes, lists, code blocks, images, and horizontal rules are all su
 |---------|---------|
 | Tables | ✅ Styled with header coloring |
 | Images | ✅ Scaled via `--image-scale` |
-| Code blocks | ✅ Syntax-highlighted appearance |
+| Code blocks | ✅ Syntax-highlighted via Highlight.js |
 | Blockquotes | ✅ Styled with left border |
 | Mermaid diagrams | ✅ CDN-rendered to SVG |
 | @chart blocks | ✅ Auto-generated SVG |
+| GitHub alerts | ✅ `> [!NOTE]`, `> [!WARNING]`, etc. |
+| Math/LaTeX | ✅ `$inline$` and `$$block$$` via KaTeX |
+| Task lists | ✅ `- [ ]` / `- [x]` as styled checkboxes |
+| Page breaks | ✅ `<!-- pagebreak -->` for PDF pagination |
+| YAML frontmatter | ✅ title, author, image_scale overrides |
 
 ### Mermaid Diagrams
 
@@ -322,3 +327,118 @@ data:
 ```
 
 Both must be followed by `![alt text](output-filename.svg)` to display the chart.
+
+---
+
+## GitHub-Native Features
+
+md2pdf includes a transform pipeline that converts GitHub-native Markdown features into styled HTML for PDF output.
+
+### Alerts (Callout Boxes)
+
+GitHub-style alerts render as styled callout boxes in PDF output:
+
+```markdown
+> [!NOTE]
+> Useful information for users.
+
+> [!TIP]
+> Helpful advice for best results.
+
+> [!IMPORTANT]
+> Critical information users need to know.
+
+> [!WARNING]
+> Dangerous operations or important caveats.
+
+> [!CAUTION]
+> Potential negative consequences of an action.
+```
+
+All five alert types (`NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`) are supported with distinct colors and icons.
+
+### Math / LaTeX
+
+Inline and block math expressions are rendered via KaTeX:
+
+```markdown
+Inline math: $E = mc^2$
+
+Block math:
+
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
+```
+
+KaTeX scripts are only injected when math delimiters are detected — no overhead for documents without math.
+
+### Syntax Highlighting
+
+Fenced code blocks with language tags get client-side syntax highlighting via Highlight.js:
+
+````markdown
+```python
+def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+```
+````
+
+### Task Lists
+
+GitHub-style task lists render as styled checkboxes:
+
+```markdown
+- [ ] Incomplete task
+- [x] Completed task
+```
+
+### Page Breaks
+
+Insert explicit page breaks for PDF output:
+
+```markdown
+Content before the break.
+
+<!-- pagebreak -->
+
+Content on a new page.
+```
+
+### YAML Frontmatter
+
+Set document metadata and override defaults:
+
+```markdown
+---
+title: Project Report
+author: Jane Doe
+date: 2025-01-15
+image_scale: 500
+---
+
+# Project Report
+
+Document body follows...
+```
+
+Supported frontmatter keys:
+
+| Key | Effect |
+|-----|--------|
+| `title` | Sets HTML `<title>` tag |
+| `author` | Document metadata (future: header/footer) |
+| `date` | Document metadata (future: header/footer) |
+| `image_scale` | Override `--image-scale` for SVG chart sizing |
+
+### Adding Custom Transforms
+
+The transform pipeline in `lib/md2html.py` follows a dispatch pattern. To add a new transform:
+
+1. Write a function: `def transform_feature(html: str) -> tuple[str, list[str], list[str]]`
+2. Register it in the `TRANSFORMS` list
+3. Add CSS support in all `themes/*.css` files (use `md2pdf-` class prefix)
+4. Add tests in `tests/test_md2html.py`

@@ -180,3 +180,7 @@ md2pdf/
 ## License
 
 [MIT](LICENSE) — David Cuccia
+
+## Related
+
+- [md2pdf-vscode](https://github.com/dcuccia/md2pdf-vscode) — VS Code extension for right-click export to HTML/PDF
